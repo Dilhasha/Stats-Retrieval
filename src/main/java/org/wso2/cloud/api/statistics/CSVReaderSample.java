@@ -35,10 +35,13 @@ public class CSVReaderSample {
             int manage = 0;
             int store = 0;
             String username;
+            String fullyQualifiedUsername;
             int i;
             for (i = 0; i < array.size(); i++) {
                 obj = (JSONObject) array.get(i);
-                username = obj.get("userName").toString();
+                fullyQualifiedUsername = obj.get("userName").toString();
+                //Extract username from fully qualified username
+                username = fullyQualifiedUsername.substring(0, fullyQualifiedUsername.lastIndexOf("@"));
                 implement = Integer.parseInt(obj.get("implement").toString());
                 manage = Integer.parseInt(obj.get("manage").toString());
                 store = Integer.parseInt(obj.get("store").toString());
